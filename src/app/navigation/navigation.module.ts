@@ -19,7 +19,11 @@ import {MatButtonModule} from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { FormsModule }   from '@angular/forms';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { SocketService } from './socket.service';
 
+const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
 
 @NgModule({
   declarations: [
@@ -43,13 +47,18 @@ import { NgxEchartsModule } from 'ngx-echarts';
     MatInputModule,
     MatButtonModule,
     RouterModule,
+    FormsModule,
     ReactiveFormsModule,
+    SocketIoModule.forRoot(config),
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),
     }),
   ],
   exports: [
     NavigationComponent
+  ],
+  providers: [
+    SocketService
   ]
 })
 export class NavigationModule { }

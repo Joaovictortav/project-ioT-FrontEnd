@@ -1,3 +1,4 @@
+import { SocketService } from './../socket.service';
 import { Component, OnInit } from '@angular/core';
 import { EChartsOption } from 'echarts';
 
@@ -25,10 +26,12 @@ export class DashboardComponent implements OnInit {
   };
   options: any;
 
-  constructor() { }
+  constructor(private socket: SocketService) { }
+
 
   ngOnInit(): void {
     this.simpleChart();
+    this.socket.getValues();
   }
 
   simpleChart() {
