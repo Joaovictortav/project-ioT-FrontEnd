@@ -1,0 +1,16 @@
+.sidenav_container {
+    min-width: 60px;
+    height: calc(100vh - 200px);
+}
+
+.btn_menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.btn_menu button {
+    background-color: transparent;
+    border: none;
+}

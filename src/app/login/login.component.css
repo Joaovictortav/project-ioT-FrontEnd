@@ -1,0 +1,11 @@
+.example-full-width {
+    width: 100%;
+}
+
+.btn-link {
+    text-decoration: none;
+}
+
+.card-login {
+    max-width: 25rem;
+}

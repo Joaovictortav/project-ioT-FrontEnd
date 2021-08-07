@@ -1,0 +1,23 @@
+<div class="sidenav_container" [@onSideNavChange]="sideNavState ? 'open' : 'close'">
+    <div fxLayout="column" fxLayoutGap="10px" style="height: 100%;">
+
+        <div>
+            <mat-nav-list>
+                <div class="btn_menu">
+                    <button class="me-1 pt-1" mat-icon-button (click)="onSinenavToggle()">
+                      <mat-icon *ngIf="!sideNavState">format_indent_increase</mat-icon>
+                      <mat-icon *ngIf="sideNavState">format_indent_decrease</mat-icon>
+                    </button>
+                </div>
+            </mat-nav-list>
+        </div>
+        <div>
+            <mat-nav-list>
+                <a class="d-flex justify-content-start" mat-list-item [routerLink]="[page.link]" *ngFor="let page of pages">
+                    <mat-icon class="me-1">{{page?.icon}}</mat-icon>
+                    <span class="ps-1 font-weight-bold text-center" [@animateText]="linkText ? 'show' : 'hide'">{{ page?.name }} </span>
+                </a>
+            </mat-nav-list>
+        </div>
+    </div>
+</div>
