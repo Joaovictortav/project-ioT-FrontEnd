@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SocketService } from '../socket.service';
 
 @Component({
   selector: 'app-graficos',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GraficosComponent implements OnInit {
 
-  constructor() { }
+  constructor(private socket: SocketService) { }
 
   ngOnInit(): void {
+  }
+
+  AcenderLedVermelho(){
+    this.socket.ledRed();
+  }
+
+  AcenderLedAzul(){
+    this.socket.ledBlue();
+  }
+
+  AcenderLedVerde(){
+    this.socket.ledGrean();
   }
 
 }

@@ -16,4 +16,16 @@ export class SocketService {
   ) {
     this.socket = io(environment.SOCKET_ENDPOINT);
   }
+
+  ledRed() {
+    this.socket.emit("led", "1");
+  }
+
+  ledBlue() {
+    this.socket.emit("led", "2");
+  }
+
+  ledGrean() {
+    this.socket.emit("led", "3");
+  }
 }
