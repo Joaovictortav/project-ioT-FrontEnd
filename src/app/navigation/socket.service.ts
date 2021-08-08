@@ -1,7 +1,7 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
-import { Socket } from 'ngx-socket-io';
+import { io, Socket } from 'socket.io-client';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,24 +10,10 @@ export class SocketService {
 
   @Output() emitter = new EventEmitter();
 
-  chatMessages: any[] = [];
+  private socket: Socket
 
   constructor(
-    private socket: Socket
-  ) {}
-
-  getValues(): Observable <any> {
-    return this.socket.fromEvent <any>('new-signals');
-  }
-
-  disconnect() {
-    this.socket.disconnect();
-  }
-
-  sendMessage(msg: string) {
-    this.socket.emit('message', msg);
-  }
-  getMessage() {
-    return this.socket.fromEvent('message').pipe(map((data: any) => data.msg));
+  ) {
+    this.socket = io(environment.SOCKET_ENDPOINT);
   }
 }

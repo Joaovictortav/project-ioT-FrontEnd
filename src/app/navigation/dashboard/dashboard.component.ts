@@ -31,7 +31,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.simpleChart();
-    this.socket.getValues();
   }
 
   simpleChart() {
