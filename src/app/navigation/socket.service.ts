@@ -10,7 +10,7 @@ export class SocketService {
 
   @Output() emitter = new EventEmitter();
 
-  private socket: Socket
+  socket: Socket;
 
   constructor(
   ) {
