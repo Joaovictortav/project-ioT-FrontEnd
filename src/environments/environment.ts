@@ -4,8 +4,14 @@
 
 export const environment = {  
 	production: false,  
-	SOCKET_ENDPOINT: '192.168.1.91:8080'
+	// SOCKET_ENDPOINT: '192.168.1.71:8080',
+	// API_URL: 'http://192.168.1.71:8080/',
+
+	SOCKET_ENDPOINT: 'http://localhost:8080/',
+	API_URL: 'http://localhost:8080/',
+
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

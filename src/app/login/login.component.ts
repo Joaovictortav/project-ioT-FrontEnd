@@ -1,3 +1,4 @@
+import { LoginService } from './login.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -13,15 +14,17 @@ export class LoginComponent implements OnInit {
 	public token: any;
 
   public formulario: FormGroup = this.formBuilder.group({
-		documento: [null, [
+		email: [null, [
       Validators.required,
-			Validators.minLength(11),
-			Validators.maxLength(14),
+			Validators.email
     ]],
     senha: [null, [Validators.required, Validators.minLength(4)]],
 	});
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private serviceLogin: LoginService
+    ) { }
 
   esqueceSenha() {
     console.log('Mudar senha');
@@ -29,10 +32,17 @@ export class LoginComponent implements OnInit {
 
   fazerLogin() {
     this.loadingBtn = true;
-    console.log('Realizar login');
+    const model = {
+      email: this.formulario.controls.email.value,
+      senha: this.formulario.controls.senha.value
+    }
+    this.serviceLogin.login(model).subscribe(data => {
+      console.log(data);
+      this.loadingBtn = false;
+    })
   }
 
-  verificaCPF(event: any) {
+  verificaEmail(event: any) {
     console.log(event);
   }
 
