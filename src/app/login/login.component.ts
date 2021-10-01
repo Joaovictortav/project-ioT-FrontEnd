@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
       console.log(data);
       this.loadingBtn = false;
     }, (erro) => {
+      this.loadingBtn = false;
       console.log(erro);
     })
   }
