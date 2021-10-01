@@ -11,6 +11,6 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   login (model: any): Observable<any> {
-    return this.http.post(`${environment.API_URL}`, model)
+    return this.http.post(`${environment.API_URL}/login`, model)
   }
 }

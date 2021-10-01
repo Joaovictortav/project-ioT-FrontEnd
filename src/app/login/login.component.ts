@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     this.loadingBtn = true;
     const model = {
       email: this.formulario.controls.email.value,
-      senha: this.formulario.controls.senha.value
+      password: this.formulario.controls.senha.value
     }
     this.serviceLogin.login(model).subscribe(data => {
       console.log(data);

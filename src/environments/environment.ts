@@ -7,8 +7,8 @@ export const environment = {
 	// SOCKET_ENDPOINT: '192.168.1.71:8080',
 	// API_URL: 'http://192.168.1.71:8080/',
 
-	SOCKET_ENDPOINT: 'http://localhost:8080/',
-	API_URL: 'http://localhost:8080/',
+	SOCKET_ENDPOINT: 'http://localhost:8080',
+	API_URL: 'http://localhost:8080',
 
 };
 
