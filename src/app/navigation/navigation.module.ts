@@ -13,7 +13,6 @@ import { GraficosComponent } from './graficos/graficos.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { HttpClientModule } from '@angular/common/http';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { RouterModule } from '@angular/router';
@@ -43,7 +42,6 @@ const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
     MatPaginatorModule,
     MatTableModule,
     MatFormFieldModule,
-    HttpClientModule,
     MatInputModule,
     MatButtonModule,
     RouterModule,

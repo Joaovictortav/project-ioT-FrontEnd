@@ -38,6 +38,8 @@ export class LoginComponent implements OnInit {
     this.serviceLogin.login(model).subscribe(data => {
       console.log(data);
       this.loadingBtn = false;
+    }, (erro) => {
+      console.log(erro);
     })
   }
 
