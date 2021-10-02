@@ -25,7 +25,9 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private serviceLogin: LoginService,
     private router: Router
-    ) { }
+    ) {
+      localStorage.removeItem('token');
+     }
 
   esqueceSenha() {
     console.log('Mudar senha');
@@ -37,7 +39,6 @@ export class LoginComponent implements OnInit {
       email: this.formulario.controls.email.value,
       password: this.formulario.controls.senha.value
     }
-    localStorage.removeItem('token');
     this.serviceLogin.login(model).subscribe(data => {
       if (data.body?.token) {
         localStorage.setItem('token', data.body?.token);
