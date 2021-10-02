@@ -2,6 +2,7 @@ import { LoginService } from './login.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private serviceLogin: LoginService
+    private serviceLogin: LoginService,
+    private router: Router
     ) { }
 
   esqueceSenha() {
@@ -35,9 +37,14 @@ export class LoginComponent implements OnInit {
       email: this.formulario.controls.email.value,
       password: this.formulario.controls.senha.value
     }
+    localStorage.removeItem('token');
     this.serviceLogin.login(model).subscribe(data => {
-      console.log(data);
-      localStorage.setItem('token', data.body.token);
+      if (data.body?.token) {
+        localStorage.setItem('token', data.body?.token);
+        this.router.navigate(['/home']);
+      } else {
+        // Chama um modal informando o erro token
+      }
       this.loadingBtn = false;
     }, (erro) => {
       this.loadingBtn = false;

@@ -5,13 +5,16 @@ import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'login',
     component: LoginComponent,
   },
   {
     path: 'home',
     loadChildren: () => import('./navigation/navigation.module').then(m => m.NavigationModule),
-    canActivate: [AuthGuard]
+  },
+  { 
+  path: '**', 
+  redirectTo: '/home' 
   },
 ];
 
