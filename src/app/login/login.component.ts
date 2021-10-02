@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
     }
     this.serviceLogin.login(model).subscribe(data => {
       console.log(data);
+      localStorage.setItem('token', data.body.token);
       this.loadingBtn = false;
     }, (erro) => {
       this.loadingBtn = false;
