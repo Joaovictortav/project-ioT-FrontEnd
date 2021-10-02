@@ -41,9 +41,9 @@ export class LoginComponent implements OnInit {
     this.serviceLogin.login(model).subscribe(data => {
       if (data.body?.token) {
         localStorage.setItem('token', data.body?.token);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/home/dashboard']);
       } else {
-        // Chama um modal informando o erro token
+        // Chama um modal informando o erro ao achar usuário 
       }
       this.loadingBtn = false;
     }, (erro) => {
