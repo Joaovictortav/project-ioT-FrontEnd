@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { NavigationComponent } from './navigation.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -22,7 +23,7 @@ import { FormsModule }   from '@angular/forms';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { SocketService } from './socket.service';
 
-const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
+const config: SocketIoConfig = { url: environment.SOCKET_ENDPOINT, options: {} };
 
 @NgModule({
   declarations: [
