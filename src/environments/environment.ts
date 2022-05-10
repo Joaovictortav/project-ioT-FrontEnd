@@ -7,8 +7,8 @@ export const environment = {
 	// SOCKET_ENDPOINT: 'https://project-iot-test.herokuapp.com',
 	// API_URL: 'https://project-iot-test.herokuapp.com',
 
-	SOCKET_ENDPOINT: 'http://192.168.1.142:3000',
-	API_URL: 'http://192.168.1.142:3000',
+	SOCKET_ENDPOINT: 'http://localhost:3000',
+	API_URL: 'http://localhost:3000',
 };
 
 

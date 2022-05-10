@@ -1,8 +1,9 @@
-<div class="row m-2">
+<div class="row m-2 h-100">
+    <!-- <div class="card col-sm me-2">
+        <div echarts [options]="options" [merge]="updateOptions" class="demo-chart card-body"></div>
+    </div> -->
+
     <div class="card col-sm me-2">
-        <div echarts [options]="chartOption" class="demo-chart card-body"></div>
-    </div>
-    <div class="card col-sm ms-2 pt-2">
-        <div echarts [options]="options" class="demo-chart"></div>
+        <div echarts [options]="chartOption" [merge]="updateOptions" class="demo-chart card-body"></div>
     </div>
 </div>

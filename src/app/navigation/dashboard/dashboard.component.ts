@@ -8,6 +8,16 @@ import { EChartsOption } from 'echarts';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  values = [0];
+  updateOptions: any;
+
+  constructor(private socket: SocketService) { }
+  ngOnInit(): void {
+
+    this.socket.socketIo().on("outTopic", (arg) => {
+      this.values.push(arg)
+    })
+  }
 
   chartOption: EChartsOption = {
     xAxis: {
@@ -19,62 +29,11 @@ export class DashboardComponent implements OnInit {
     },
     series: [
       {
-        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        data: this.values,
         type: 'line',
+        showSymbol: false,
       },
     ],
   };
-  options: any;
-
-  constructor(private socket: SocketService) { }
-
-
-  ngOnInit(): void {
-    this.simpleChart();
-  }
-
-  simpleChart() {
-    const xAxisData = [];
-    const data1 = [];
-    const data2 = [];
-
-    for (let i = 0; i < 100; i++) {
-      xAxisData.push('category' + i);
-      data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5);
-      data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
-    }
-
-    this.options = {
-      legend: {
-        data: ['bar', 'bar2'],
-        align: 'left',
-      },
-      tooltip: {},
-      xAxis: {
-        data: xAxisData,
-        silent: false,
-        splitLine: {
-          show: false,
-        },
-      },
-      yAxis: {},
-      series: [
-        {
-          name: 'bar',
-          type: 'bar',
-          data: data1,
-          animationDelay: (idx: number) => idx * 10,
-        },
-        {
-          name: 'bar2',
-          type: 'bar',
-          data: data2,
-          animationDelay: (idx: number) => idx * 10 + 100,
-        },
-      ],
-      animationEasing: 'elasticOut',
-      animationDelayUpdate: (idx: number) => idx * 5,
-    };
-  }
 
 }
